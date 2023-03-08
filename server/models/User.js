@@ -2,10 +2,14 @@ const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema(
   {
-    username: {
+    firstName: {
       type: String,
       required: true,
-      unique: true,
+      trim: true
+    },
+    lastName: {
+      type: String,
+      required: true,
       trim: true
     },
     email: {
@@ -19,6 +23,25 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
     },
+    bucket: [
+      {
+        name: {
+          type: String,
+          trim: true,
+          required: false
+        },
+        location: {
+          type: String,
+          trim: true,
+          required: false
+        }
+      }
+    ],
+    trips: {
+      type: Schema.Types.ObjectId,
+      ref: 'Trip',
+      required: false
+    }
   },
   // Set this to use virtual below
   {
