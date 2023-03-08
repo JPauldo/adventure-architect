@@ -38,11 +38,11 @@ const userSchema = new Schema(
         }
       }
     ],
-    trips: {
+    trips: [{
       type: Schema.Types.ObjectId,
       ref: 'Trip',
       required: false
-    }
+    }]
   },
   // Set this to use virtual below
   {
