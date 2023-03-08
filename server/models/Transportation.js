@@ -2,6 +2,11 @@ const { Schema, model } = require('mongoose');
 
 const transportationSchema = new Schema(
   {
+    flight: {
+      type: Schema.Types.ObjectId,
+      ref: 'Flight',
+      required: false
+    },
     train: {
       type: Schema.Types.ObjectId,
       ref: 'Train',
@@ -10,11 +15,6 @@ const transportationSchema = new Schema(
     car: {
       type: Schema.Types.ObjectId,
       ref: 'Car',
-      required: false
-    },
-    flight: {
-      type: Schema.Types.ObjectId,
-      ref: 'Flight',
       required: false
     }
   },

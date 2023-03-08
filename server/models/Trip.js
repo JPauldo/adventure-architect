@@ -10,11 +10,6 @@ const tripSchema = new Schema(
       type: String,
       required: true
     },
-    transport: {
-      type: Schema.Types.ObjectId,
-      ref: 'Transportation',
-      required: false
-    },
     startingDate: {
       type: String,
       required: true
@@ -26,6 +21,11 @@ const tripSchema = new Schema(
     hotel: {
       type: Schema.Types.ObjectId,
       ref: 'Hotel',
+      required: false
+    },
+    transport: {
+      type: Schema.Types.ObjectId,
+      ref: 'Transportation',
       required: false
     },
     daysOfTrip: [
