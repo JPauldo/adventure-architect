@@ -7,12 +7,14 @@ import Nav from './components/Nav/Nav';
 
 const App = () => {
   return (
+    <div className="bg-stone-900 text-stone-200 h-screen w-screen">
     <Router>
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>
+    </div>
   );
 };
 
