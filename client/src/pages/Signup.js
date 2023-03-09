@@ -1,15 +1,41 @@
-import { ReactComponent as PlaneLogo } from '../assets/plane.svg';
+import { ReactComponent as PlaneLogo } from "../assets/plane.svg";
+import { useRef } from "react";
 
 const Signup = () => {
+  const usernameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const userData = {
+      username: usernameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+
+    // submit form to backend
+    // redirect to dashboard
+    console.log(userData);
+  };
+
   return (
     <>
       <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
             <PlaneLogo />
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-stone-200">Create an account</h2>
+            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-stone-200">
+              Create an account
+            </h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form
+            onSubmit={submitHandler}
+            className="mt-8 space-y-6"
+            action="#"
+            method="POST"
+          >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -17,6 +43,7 @@ const Signup = () => {
                   Username
                 </label>
                 <input
+                  ref={usernameRef}
                   id="username"
                   name="username"
                   type="text"
@@ -31,6 +58,7 @@ const Signup = () => {
                   Email address
                 </label>
                 <input
+                  ref={emailRef}
                   id="email-address"
                   name="email"
                   type="email"
@@ -45,6 +73,7 @@ const Signup = () => {
                   Password
                 </label>
                 <input
+                  ref={passwordRef}
                   id="password"
                   name="password"
                   type="password"
@@ -56,16 +85,17 @@ const Signup = () => {
               </div>
             </div>
             <div className="flex flex-row w-full justify-between">
-              <button type="submit" className="group relative flex w-full justify-center rounded-md bg-sky-600 py-2 px-3 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">
+              <button
+                type="submit"
+                className="group relative flex w-full justify-center rounded-md bg-sky-600 py-2 px-3 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+              >
                 Signup
               </button>
             </div>
           </form>
           <p className="mt-3 text-center text-sm text-stone-200">
             Already have an account? <br></br>
-            <a href="/login">
-              Login
-            </a>
+            <a href="/login">Login</a>
           </p>
         </div>
       </div>
