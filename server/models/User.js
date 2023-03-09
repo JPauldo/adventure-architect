@@ -22,7 +22,7 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
-      minlength: 5,
+      minlength: 8,
     },
     bucket: [
       {
@@ -61,10 +61,10 @@ userSchema.virtual('fullName')
   .set(function (v) {
     const firstName = v.split(' ')[0];
     const lastName = v.split(' ')[1];
-    this.set({ first: firstName, last: lastName });
+    this.set({ firstName, lastName });
   });
 
-userSchema.pre('save', async function(next) {
+userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
