@@ -17,6 +17,7 @@ const typeDefs = gql`
     }
 
     type Trip {
+        _id: ID!
         name: String
         location: String
         startingDate: String 
@@ -27,6 +28,7 @@ const typeDefs = gql`
     }
 
     type Hotel {
+        _id: ID!
         name: String
         address: String
         phoneNumber: String
@@ -35,12 +37,14 @@ const typeDefs = gql`
     }
 
     type Transportation {
+        _id: ID!
         flight: Flight
         train: Train
         car: Car
     }
 
     type Train {
+        _id: ID!
         company: String
         station: String
         carNumber: String
@@ -49,6 +53,7 @@ const typeDefs = gql`
     }
 
     type Car {
+        _id: ID!
         rental: Boolean
         company: String
         pickUpTime: String
@@ -57,6 +62,7 @@ const typeDefs = gql`
     }
 
     type Flight {
+        _id: ID!
         airline: String
         airport: String
         gate: String
@@ -66,12 +72,14 @@ const typeDefs = gql`
     }
 
     type Day {
+        _id: ID!
         date: String
         items: [Item]
         notes: String
     }
 
     type Item {
+        _id: ID!
         category: String
         startTime: String
         endTime: String
@@ -82,9 +90,26 @@ const typeDefs = gql`
         longitude: Float
     }
 
+    type Auth {
+        token: ID!
+        user: User
+    }
+
     # Read operations 
     type Query {
+        getMe(firstName: String, lastName: String): User
+        getSingleUser(firstName: String!, lastName: String!): User
         getAllUsers: [User]
+
+        getSingleTrip(tripId: String!): Trip
+        getTripsByUser(userId: String!): [Trip]
+        getAllTrips: [Trip]
+    }
+
+    # Create, Update, Delete operations
+    type Mutation {
+        login(email: String!, password: String!): Auth
+        addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     }
 `;
 
