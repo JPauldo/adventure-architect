@@ -7,10 +7,11 @@ const typeDefs = gql`
         lastName: String
         email: String
         password: String
-        bucket: [BucketPlaces]
+        bucket: [BucketPlace]
+        trips: [Trip]
     }
 
-    type BucketPlaces {
+    type BucketPlace {
         name: String
         location: String
     }
@@ -18,10 +19,10 @@ const typeDefs = gql`
     type Trip {
         name: String
         location: String
-        transport: Transportation
         startingDate: String 
         endingDate: String
         hotel: Hotel
+        transport: Transportation
         daysOfTrip: Day 
     }
 
@@ -34,9 +35,9 @@ const typeDefs = gql`
     }
 
     type Transportation {
+        flight: Flight
         train: Train
         car: Car
-        flight: Flight
     }
 
     type Train {
@@ -77,8 +78,8 @@ const typeDefs = gql`
         name: String
         address: String
         notes: String
-        latitude: float
-        longitude: float
+        latitude: Float
+        longitude: Float
     }
 
     # Read operations 
