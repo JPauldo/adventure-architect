@@ -5,6 +5,15 @@ const Signup = () => {
   const usernameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
+  const passwordCheckRef = useRef();
+
+  const validatePassword = () => {
+    if (passwordRef.current.value === passwordCheckRef.current.value) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -15,9 +24,15 @@ const Signup = () => {
       password: passwordRef.current.value,
     };
 
-    // submit form to backend
-    // redirect to dashboard
-    console.log(userData);
+    const validate = validatePassword()
+
+    if (validate) {
+      // submit form to backend
+      // redirect to dashboard
+      console.log(userData);
+    } else {
+      console.log("Passwords must match!");
+    }
   };
 
   return (
@@ -79,8 +94,23 @@ const Signup = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="relative block w-full rounded-b-md border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="relative block w-full border-0 border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                   placeholder="Password"
+                />
+              </div>
+              <div>
+                <label htmlFor="passwordCheck" className="sr-only">
+                  Confirm Password
+                </label>
+                <input
+                  ref={passwordCheckRef}
+                  id="passwordCheck"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="relative block w-full rounded-b-md border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  placeholder="Confirm Password"
                 />
               </div>
             </div>
