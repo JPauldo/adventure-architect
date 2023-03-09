@@ -1,6 +1,24 @@
 import { ReactComponent as PlaneLogo } from '../assets/plane.svg';
+import { useRef } from 'react';
 
 const Login = () => {
+
+  const emailRef = useRef()
+  const passwordRef = useRef()
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+
+    const userData = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+
+    //  submit to backend
+    // redirect to dashboard
+    console.log(userData);
+  }
+
   return (
     <>
       <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -9,7 +27,7 @@ const Login = () => {
             <PlaneLogo />
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-stone-200">Login to your account</h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form onSubmit={handleLogin} className="mt-8 space-y-6" action="#" method="POST">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -18,6 +36,7 @@ const Login = () => {
                 </label>
                 <input
                   id="email-address"
+                  ref={emailRef}
                   name="email"
                   type="email"
                   autoComplete="email"
@@ -32,6 +51,7 @@ const Login = () => {
                 </label>
                 <input
                   id="password"
+                  ref={passwordRef}
                   name="password"
                   type="password"
                   autoComplete="current-password"
