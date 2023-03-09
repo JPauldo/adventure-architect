@@ -114,6 +114,16 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
+        updateUser: async (parent, args, context) => {
+            const user = await User.findOneAndUpdate(
+                context.user._id,
+                { args },
+                { runValidators: true, new: true }
+            );
+            
+            const token = signToken(user);
+            return { token, user };
+        }
     }
 }
 
