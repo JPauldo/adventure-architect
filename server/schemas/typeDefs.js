@@ -25,6 +25,7 @@ const typeDefs = gql`
         hotel: Hotel
         transport: Transportation
         daysOfTrip: Day 
+        userId: User
     }
 
     type Hotel {
@@ -104,6 +105,15 @@ const typeDefs = gql`
         getSingleTrip(tripId: String!): Trip
         getTripsByUser(userId: String!): [Trip]
         getAllTrips: [Trip]
+
+        getSingleHotel(hotelId: String!): Hotel
+        getSingleTrain(trainId: String!): Train
+        getSingleCar(carId: String!): Car
+        getSingleFlight(flightId: String!): Flight
+
+        getSingleDay(dayId: String!): Day
+
+        getSingleItem(itemId: String!): Item
     }
 
     # Create, Update, Delete operations
