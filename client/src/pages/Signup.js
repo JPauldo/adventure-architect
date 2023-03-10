@@ -2,7 +2,8 @@ import { ReactComponent as PlaneLogo } from "../assets/plane.svg";
 import { useRef } from "react";
 
 const Signup = () => {
-  const usernameRef = useRef();
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordCheckRef = useRef();
@@ -19,7 +20,8 @@ const Signup = () => {
     e.preventDefault();
 
     const userData = {
-      username: usernameRef.current.value,
+      firstName: firstNameRef.current.value,
+      lastName: lastNameRef.current.value,
       email: emailRef.current.value,
       password: passwordRef.current.value,
     };
@@ -54,21 +56,31 @@ const Signup = () => {
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
-                <label htmlFor="username" className="sr-only">
+                <label htmlFor="firstName" className="sr-only">
                   Username
                 </label>
                 <input
-                  ref={usernameRef}
-                  id="username"
-                  name="username"
+                  ref={firstNameRef}
+                  id="firstName"
+                  name="firstName"
                   type="text"
-                  autoComplete="username"
+                  autoComplete="firstName"
                   required
                   className="relative block w-full rounded-t-md border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                  placeholder="Username"
+                  placeholder="First Name"
                 />
               </div>
               <div>
+              <input
+                  ref={lastNameRef}
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  autoComplete="lastName"
+                  required
+                  className="relative block w-full rounded-t-md border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  placeholder="Last Name"
+                />
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
