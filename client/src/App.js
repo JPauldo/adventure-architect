@@ -6,12 +6,13 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Dashboard from './pages/Dashboard';
 import Nav from './components/Nav/Nav';
 
 const App = () => {
 
   return (
-    <div className="bg-stone-200 text-stone-900 dark:bg-stone-900 dark:text-stone-200 h-screen w-screen">
+    <div className="min-h-screen bg-stone-100 text-stone-900 dark:bg-stone-900 dark:text-stone-200 subpixel-antialiased">
       <Router>
         <Nav />
         <Routes>
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
     </div>
