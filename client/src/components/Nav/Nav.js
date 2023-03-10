@@ -1,6 +1,6 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, BellIcon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 import { ReactComponent as PlaneLogo } from '../../assets/plane.svg';
 import Auth from '../../utils/auth';
 
@@ -16,6 +16,28 @@ function classNames(...classes) {
 }
 
 const Nav = () => {
+  const [theme, setTheme] = useState(null);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark').matches) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
+
+  const handleThemeSwitch = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   if (Auth.loggedIn()) {
     return (
       <Disclosure as="nav" className="bg-stone-600/30 backdrop-blur-md border-b border-stone-400/30">
@@ -50,11 +72,15 @@ const Nav = () => {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  {/* <button type="button" className="rounded-full bg-stone-800 p-1 text-stone-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-800">
-                          <span className="sr-only">View notifications</span>
-                          <BellIcon className="h-6 w-6" aria-hidden="true" />
-                        </button> */}
-
+                {/* Dark theme switcher */}
+                <button type="button" className="rounded-full bg-stone-800 p-1 text-stone-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-800" onClick={handleThemeSwitch}>
+                    <div className="hidden dark:block">
+                      <SunIcon className="h-6 w-6" />
+                    </div>
+                    <div className="block dark:hidden">
+                      <MoonIcon className="h-6 w-6" />
+                    </div>
+                  </button>
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
                     <div>
@@ -122,7 +148,7 @@ const Nav = () => {
                 </div>
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex flex-shrink-0 items-center">
-                  <a href="/">
+                    <a href="/">
                       <PlaneLogo className="block h-8 w-auto lg:hidden" />
                     </a>
                     <a href="/">
@@ -139,51 +165,21 @@ const Nav = () => {
                     </div>
                   </div>
                 </div>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  {/* <button type="button" className="rounded-full bg-stone-800 p-1 text-stone-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-800">
-                              <span className="sr-only">View notifications</span>
-                              <BellIcon className="h-6 w-6" aria-hidden="true" />
-                            </button> */}
-
+                <div className="flex flex-row items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                {/* Dark theme switcher */}
+                  <button type="button" className="rounded-full p-1 mr-3 text-stone-900 hover:text-stone-800 hover:bg-stone-200 dark:text-stone-200 dark:hover:text-stone-50 dark:hover:bg-stone-700" onClick={handleThemeSwitch}>
+                    <div className="hidden dark:block">
+                      <SunIcon className="h-6 w-6" />
+                    </div>
+                    <div className="block dark:hidden">
+                      <MoonIcon className="h-6 w-6" />
+                    </div>
+                  </button>
                   <div>
                     <a href="/login" className="rounded-md bg-amber-500 px-3.5 py-2.5 text-sm font-semibold text-stone-900 hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 transition">
                       login
                     </a>
                   </div>
-                  {/* Profile dropdown */}
-                  {/* <Menu as="div" className="relative ml-3">
-                    <div>
-                      <Menu.Button className="flex rounded-full bg-stone-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-800">
-                        <span className="sr-only">Open user menu</span>
-                        <img className="h-8 w-8 rounded-full" src="https://source.boringavatars.com/beam/40/username-here" alt="" />
-                      </Menu.Button>
-                    </div>
-                    <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a href="/profile" className={classNames(active ? 'bg-stone-100' : '', 'block px-4 py-2 text-sm text-stone-700')}>
-                              Your Profile
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a href="#" className={classNames(active ? 'bg-stone-100' : '', 'block px-4 py-2 text-sm text-stone-700')}>
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a href="#" className={classNames(active ? 'bg-stone-100' : '', 'block px-4 py-2 text-sm text-stone-700')}>
-                              Sign out
-                            </a>
-                          )}
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu> */}
                 </div>
               </div>
             </div>
