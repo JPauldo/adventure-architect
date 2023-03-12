@@ -66,3 +66,62 @@ export const QUERY_SINGLE_TRIP = gql`
         }
     }
 `
+
+export const QUERY_ALL_TRIPS = gql`
+    query getAllTrips {
+        trip {
+            _id
+            name
+            location
+            startingDate
+            endingDate
+            hotel
+            transport
+            daysofTrip
+            userId
+        }
+    }
+`;
+
+export const QUERY_SINGLE_HOTEL = gql`
+    query getSingleHotel($hotelId: ID!) {
+        hotel(hotelId: $hotelId) {
+            _id
+            name
+            address
+            phoneNumber
+            checkIn
+            checkOut
+        }
+    }
+`;
+
+export const QUERY_SINGLE_TRAIN = gql`
+    query getSingleTrain($trainID: ID!) {
+        train(trainId: $trainId) {
+            _id
+          company
+          station
+          carNumber
+          boardingTime
+          departureTime  
+        }
+    }  
+
+`;
+
+export const QUERY_SINGLE_CAR = gql`
+    query getSingleCar($cardId: ID!) {
+        car(cardId: $cardId) {
+            _id
+            company
+            pickUpTime
+            returnTime
+            carModel
+        }
+    }
+`;
+
+export const QUERY_SINGLE_FLIGHT = gql`
+    
+`
