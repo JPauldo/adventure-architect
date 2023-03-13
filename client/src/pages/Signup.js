@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ReactComponent as PlaneLogo } from '../assets/plane.svg';
 import { useRef } from 'react';
 // import { ADD_USER } from '../utils/mutations';
@@ -133,7 +134,7 @@ const Signup = () => {
           </form>
           <p className="mt-3 text-center text-sm text-stone-700 dark:text-stone-200">
             Already have an account? <br></br>
-            <a href="/login">Login</a>
+            <Link to="/login">Login</Link>
           </p>
         </div>
       </div>

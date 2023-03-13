@@ -3,6 +3,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import { ReactComponent as PlaneLogo } from '../../assets/plane.svg';
 import Auth from '../../utils/auth';
+import { Link } from 'react-router-dom';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard' },
@@ -59,19 +60,19 @@ const Nav = () => {
                 </div>
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex flex-shrink-0 items-center">
-                    <a href="/">
+                    <Link to="/">
                       <PlaneLogo className="block h-8 w-auto lg:hidden" />
-                    </a>
-                    <a href="/">
+                    </Link>
+                    <Link to="/">
                       <PlaneLogo className="hidden h-8 w-auto lg:block" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-1">
                       {navigation.map((item) => (
-                        <a key={item.name} href={item.href} className="bg-transparent hover:bg-blue-50/40 dark:text-stone-200 dark:hover:bg-purple-400/30 dark:hover:text-stone-50 transition rounded-md px-3 py-2 text-base font-medium" aria-current={item.current ? 'page' : undefined}>
+                        <Link key={item.name} to={item.href} className="bg-transparent hover:bg-blue-50/40 dark:text-stone-200 dark:hover:bg-purple-400/30 dark:hover:text-stone-50 transition rounded-md px-3 py-2 text-base font-medium" aria-current={item.current ? 'page' : undefined}>
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -89,24 +90,24 @@ const Nav = () => {
                       <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-stone-300/60 dark:bg-stone-100/70 py-1 shadow-lg focus:outline-none backdrop-blur-sm border-2 border-stone-50/30">
                         <Menu.Item>
                           {({ active }) => (
-                            <a href="/profile" className={classNames(active ? 'bg-stone-100/50 font-semibold' : '', 'block px-4 py-2 text-sm text-stone-700 transition-all')}>
+                            <Link to="/profile" className={classNames(active ? 'bg-stone-100/50 font-semibold' : '', 'block px-4 py-2 text-sm text-stone-700 transition-all')}>
                               <p className="text-base">Profile</p>
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a href="/settings" className={classNames(active ? 'bg-stone-100/50 font-semibold' : '', 'block px-4 py-2 text-sm text-stone-700 transition-all')}>
+                            <Link to="/settings" className={classNames(active ? 'bg-stone-100/50 font-semibold' : '', 'block px-4 py-2 text-sm text-stone-700 transition-all')}>
                               <p className="text-base">Settings</p>
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a href="/" onClick={() => Auth.logout()} className={classNames(active ? 'bg-stone-100/50 font-semibold' : '', 'block px-4 py-2 text-sm text-stone-700 flex flex-row transition-all')}>
+                            <Link to="/" onClick={() => Auth.logout()} className={classNames(active ? 'bg-stone-100/50 font-semibold' : '', 'block px-4 py-2 text-sm text-stone-700 flex flex-row transition-all')}>
                               <ArrowRightOnRectangleIcon className="h-5 mt-0.5 pr-1" />
                               <p className="text-base">Sign out</p>
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                       </Menu.Items>
@@ -154,28 +155,28 @@ const Nav = () => {
                 </div>
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex flex-shrink-0 items-center">
-                    <a href="/">
+                    <Link to="/">
                       <PlaneLogo className="block h-8 w-auto lg:hidden" />
-                    </a>
-                    <a href="/">
+                    </Link>
+                    <Link to="/">
                       <PlaneLogo className="hidden h-8 w-auto lg:block" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-1">
                       {navigation.map((item) => (
-                        <a key={item.name} href={item.href} className="bg-transparent hover:bg-blue-50/40 dark:text-stone-200 dark:hover:bg-purple-400/30 dark:hover:text-stone-50 transition rounded-md px-3 py-2 text-base font-normal" aria-current={item.current ? 'page' : undefined}>
+                        <Link key={item.name} to={item.href} className="bg-transparent hover:bg-blue-50/40 dark:text-stone-200 dark:hover:bg-purple-400/30 dark:hover:text-stone-50 transition rounded-md px-3 py-2 text-base font-normal" aria-current={item.current ? 'page' : undefined}>
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 </div>
                 <div className="flex flex-row items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <div>
-                    <a href="/login" className="rounded-md bg-amber-400 px-3.5 py-2.5 text-base font-normal text-stone-900 hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 transition">
+                    <Link to="/login" className="rounded-md bg-amber-400 px-3.5 py-2.5 text-base font-normal text-stone-900 hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 transition">
                       login
-                    </a>
+                    </Link>
                   </div>
                   {/* Dark theme switcher */}
                   <div className="hidden md:block rounded-full p-1 ml-3 text-stone-900 hover:text-sky-800 hover:bg-sky-50/40 dark:text-stone-200 dark:hover:text-amber-200 dark:hover:bg-amber-400/20 transition hover:cursor-pointer" onClick={handleThemeSwitch}>

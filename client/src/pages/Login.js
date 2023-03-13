@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ReactComponent as PlaneLogo } from '../assets/plane.svg';
 import { useRef } from 'react';
 
@@ -70,9 +71,9 @@ const Login = () => {
           </form>
           <p className="mt-3 text-center text-sm text-stone-700 dark:text-stone-200">
             Don't have an account? <br></br>
-            <a href="/signup">
+            <Link to="/signup">
               Signup
-            </a>
+            </Link>
           </p>
         </div>
       </div>
