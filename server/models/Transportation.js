@@ -2,6 +2,11 @@ const { Schema, model } = require('mongoose');
 
 const transportationSchema = new Schema(
   {
+    tripId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Trip',
+      required: false
+    },
     flightId: {
       type: Schema.Types.ObjectId,
       ref: 'Flight',
