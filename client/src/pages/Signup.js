@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as PlaneLogo } from '../assets/plane.svg';
 import { useRef } from 'react';
-// import { ADD_USER } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
 
 const Signup = () => {
   const firstNameRef = useRef();
@@ -9,6 +10,8 @@ const Signup = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordCheckRef = useRef();
+
+  const [addUser, {error}] = useMutation(ADD_USER)
 
   const validatePassword = () => {
     if (passwordRef.current.value === passwordCheckRef.current.value) {
@@ -18,7 +21,7 @@ const Signup = () => {
     }
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
     const userData = {
@@ -31,9 +34,15 @@ const Signup = () => {
     const validate = validatePassword();
 
     if (validate) {
-      // submit form to backend
-      // redirect to dashboard
-      console.log(userData);
+      
+      try {
+        const {data} = addUser({
+          variables: {...userData}
+        })
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       console.log('Passwords must match!');
     }
