@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ReactComponent as PlaneLogo } from '../assets/plane.svg';
 import { useRef } from 'react';
 
@@ -21,7 +22,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-center py-32 sm:py-48 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
             <PlaneLogo />
@@ -70,9 +71,9 @@ const Login = () => {
           </form>
           <p className="mt-3 text-center text-sm text-stone-700 dark:text-stone-200">
             Don't have an account? <br></br>
-            <a href="/signup">
+            <Link to="/signup">
               Signup
-            </a>
+            </Link>
           </p>
         </div>
       </div>

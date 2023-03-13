@@ -5,3 +5,6 @@
 :root {
     font-family: 'Open Sans', sans-serif;
 }
+body::-webkit-scrollbar {
+    width: 0px;
+  }
