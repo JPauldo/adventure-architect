@@ -9,7 +9,7 @@ const navigation = [
   { name: 'Dashboard', href: '/dashboard' },
   { name: 'Discover', href: '#' },
   { name: 'Itinerary', href: '#' },
-  { name: 'Calendar', href: '#' },
+  { name: 'Calendar', href: '/calendar' },
 ];
 
 function classNames(...classes) {

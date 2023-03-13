@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import Calendar from './pages/Calendar';
 import Nav from './components/Nav/Nav';
 
 const httpLink = createHttpLink({
@@ -43,6 +44,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/calendar" element={<Calendar />} />
           </Routes>
         </Router>
       </div>
