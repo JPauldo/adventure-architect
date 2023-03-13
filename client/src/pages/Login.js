@@ -1,15 +1,34 @@
+import { Link } from 'react-router-dom';
 import { ReactComponent as PlaneLogo } from '../assets/plane.svg';
+import { useRef } from 'react';
 
 const Login = () => {
+
+  const emailRef = useRef()
+  const passwordRef = useRef()
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+
+    const userData = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+
+    //  submit to backend
+    // redirect to dashboard
+    console.log(userData);
+  }
+
   return (
     <>
-      <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-center py-32 sm:py-48 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
             <PlaneLogo />
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-stone-200">Login to your account</h2>
+            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-stone-700 dark:text-stone-200">Login to your account</h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form onSubmit={handleLogin} className="mt-8 space-y-6" action="#" method="POST">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -18,6 +37,7 @@ const Login = () => {
                 </label>
                 <input
                   id="email-address"
+                  ref={emailRef}
                   name="email"
                   type="email"
                   autoComplete="email"
@@ -32,6 +52,7 @@ const Login = () => {
                 </label>
                 <input
                   id="password"
+                  ref={passwordRef}
                   name="password"
                   type="password"
                   autoComplete="current-password"
@@ -42,17 +63,17 @@ const Login = () => {
               </div>
             </div>
             <div className="flex flex-row w-full justify-between">
-              <button type="submit" className="group relative flex w-full justify-center rounded-md bg-sky-600 py-2 px-3 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">
+              <button type="submit" className="group relative flex w-full justify-center transition rounded-md shadow-md focus:shadow-sm bg-sky-600 py-2 px-3 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3"></span>
                 Login
               </button>
             </div>
           </form>
-          <p className="mt-3 text-center text-sm text-stone-200">
+          <p className="mt-3 text-center text-sm text-stone-700 dark:text-stone-200">
             Don't have an account? <br></br>
-            <a href="/signup">
+            <Link to="/signup">
               Signup
-            </a>
+            </Link>
           </p>
         </div>
       </div>

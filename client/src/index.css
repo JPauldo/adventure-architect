@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* * {
-    transition: background-color 150ms;
-} */
+:root {
+    font-family: 'Open Sans', sans-serif;
+}
+body::-webkit-scrollbar {
+    width: 0px;
+  }

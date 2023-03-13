@@ -20,6 +20,7 @@ const resolvers = {
             }
         },
 
+        //Get single user
         getSingleUser: async (parent, { firstName, lastName }) => {
             const user = await User.findOne({ firstName, lastName });
             return user;
@@ -28,7 +29,66 @@ const resolvers = {
         // Get all users in DB
         getAllUsers: async (parent, args) => {
             return await User.find({});
-        }
+        },
+
+        //Get single Trip
+        getSingleTrip: async (parent, { tripId }) => {
+            const trip = await Trip.findOne({ _id: tripId });
+            return trip;
+        },
+
+        //Get trip by user
+        getTripsByUser: async (parent, args, context) => {
+            if (context.user) {
+                const trips = await Trip.find({ userId: context.user._id })
+                return trips;
+            } else if (args.userId) {
+                const trips = await Trip.find({ userId: args.userId })
+                return trips;
+            }
+        },
+
+        //Get all trips
+        getAllTrips: async (parent, args) => {
+            return await Trip.find({});
+        },
+
+        // Get single hotel
+        getSingleHotel: async (parent, { hotelId }) => {
+            const hotel = await Hotel.findOne({ _id: hotelId });
+            return hotel;
+        },
+
+        //Get single train
+        getSingleTrain: async (parent, { trainId }) => {
+            const train = await Train.findOne({ _id: trainId });
+            return train;
+        },
+
+        //Get single car
+        getSingleCar: async (parent, { carId }) => {
+            const car = await Car.findOne({ _id: carId });
+            return car;
+        },
+
+        //Get single flight
+        getSingleFlight: async (parent, { flightId }) => {
+            const flight = await Flight.findOne({ _id: flightId });
+            return flight;
+        },
+
+        //Get single day
+        getSingleDay: async (parent, { dayId }) => {
+            const day = await Day.findOne({ _id: dayId }).populate('items');
+            return day;
+        },
+
+        //Get single item
+        getSingleItem: async (parent, { itemId }) => {
+            const item = await Item.findOne({ _id: itemId });
+            return item;
+        },
+
     },
 
     Mutation: {

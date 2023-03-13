@@ -6,7 +6,7 @@ const tripSchema = new Schema(
       type: String,
       required: true
     },
-    location:  {
+    location: {
       type: String,
       required: true
     },
@@ -34,8 +34,16 @@ const tripSchema = new Schema(
         ref: 'Day',
         required: false
       }
+    ],
+    userId: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: false
+      },
     ]
   },
+
   {
     toJSON: {
       virtuals: true,
