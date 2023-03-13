@@ -1,5 +1,5 @@
-import { ReactComponent as PlaneLogo } from "../assets/plane.svg";
-import { useRef } from "react";
+import { ReactComponent as PlaneLogo } from '../assets/plane.svg';
+import { useRef } from 'react';
 
 const Signup = () => {
   const firstNameRef = useRef();
@@ -26,14 +26,14 @@ const Signup = () => {
       password: passwordRef.current.value,
     };
 
-    const validate = validatePassword()
+    const validate = validatePassword();
 
     if (validate) {
       // submit form to backend
       // redirect to dashboard
       console.log(userData);
     } else {
-      console.log("Passwords must match!");
+      console.log('Passwords must match!');
     }
   };
 
@@ -43,16 +43,9 @@ const Signup = () => {
         <div className="w-full max-w-md space-y-8">
           <div>
             <PlaneLogo />
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-stone-700 dark:text-stone-200">
-              Create an account
-            </h2>
+            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-stone-700 dark:text-stone-200">Create an account</h2>
           </div>
-          <form
-            onSubmit={submitHandler}
-            className="mt-8 space-y-6"
-            action="#"
-            method="POST"
-          >
+          <form onSubmit={submitHandler} className="mt-8 space-y-6" action="#" method="POST">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -67,23 +60,25 @@ const Signup = () => {
                   autoComplete="firstName"
                   required
                   className="relative block w-full rounded-t-md border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-500 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                  placeholder="Username"
+                  placeholder="First Name"
                 />
               </div>
               <div>
-              <input
+                <input
                   ref={lastNameRef}
                   id="lastName"
                   name="lastName"
                   type="text"
                   autoComplete="lastName"
                   required
-                  className="relative block w-full rounded-t-md border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="relative block w-full border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-500 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                   placeholder="Last Name"
                 />
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
+              </div>
+              <div>
                 <input
                   ref={emailRef}
                   id="email-address"
