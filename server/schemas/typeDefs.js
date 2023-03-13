@@ -24,7 +24,8 @@ const typeDefs = gql`
         endingDate: String
         hotel: Hotel
         transport: Transportation
-        daysOfTrip: Day 
+        daysOfTrip: [Day] 
+        userId: ID
     }
 
     type Hotel {
