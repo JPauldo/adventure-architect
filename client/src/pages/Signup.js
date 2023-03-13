@@ -1,6 +1,5 @@
 import { ReactComponent as PlaneLogo } from '../assets/plane.svg';
 import { useRef } from 'react';
-import { ADD_USER } from '../utils/mutations';
 
 const Signup = () => {
   const firstNameRef = useRef();
