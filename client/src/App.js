@@ -12,7 +12,7 @@ import Nav from './components/Nav/Nav';
 const App = () => {
 
   return (
-    <div className="min-h-screen bg-stone-100 text-stone-900 dark:bg-stone-900 dark:text-stone-200 subpixel-antialiased">
+    <div className="min-h-screen bg-zinc-100 text-stone-900 dark:bg-stone-900 dark:text-stone-200 subpixel-antialiased transition duration-200">
       <Router>
         <Nav />
         <Routes>

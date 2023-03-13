@@ -20,7 +20,7 @@ const Home = () => {
             </div>
           </div> */}
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight dark:text-sky-400 sm:text-6xl">Adventure Architect</h1>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r dark:from-indigo-500 dark:via-purple-500 dark:to-pink-400 from-blue-300 to-sky-600">Adventure Architect</h1>
             <p className="mt-6 text-xl font-semibold leading-8 dark:text-amber-200">Build the perfect getaway</p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a href="/signup" className="rounded-md bg-amber-400 px-3.5 py-2.5 text-sm font-semibold text-stone-900 shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 transition">
