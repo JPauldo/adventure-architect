@@ -196,7 +196,7 @@ const resolvers = {
                 const trip = await Trip.create({ userId: context.user._id, name, location, startDate, endDate })
                 
                 await User.findOneAndUpdate(
-                    context.user._id,
+                    { _id: context.user._id },
                     { $addToSet: { trips: trip._id }},
                     { runValidators: true }
                 );
@@ -284,7 +284,7 @@ const resolvers = {
                 }
             );
 
-            await User.findOneAndUpdate(
+            await Trip.findOneAndUpdate(
                 { _id: tripId },
                 { $addToSet: { trips: transport._id }},
                 { new: true, runValidators: true }
@@ -332,7 +332,7 @@ const resolvers = {
                 }
             );
 
-            await User.findOneAndUpdate(
+            await Trip.findOneAndUpdate(
                 { _id: tripId },
                 { $addToSet: { trips: transport._id }},
                 { new: true, runValidators: true }
@@ -401,7 +401,7 @@ const resolvers = {
             );
 
             await Trip.findOneAndUpdate(
-                { _id: userId },
+                { _id: tripId },
                 { $pull: { trips: transport._id }},
                 { new: true, runValidators: true }
             );

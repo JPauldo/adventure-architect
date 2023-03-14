@@ -175,15 +175,18 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         updateUser(firstName: String, lastName: String, email: String, password: String): Auth
+        
         addToBucketList(userId: ID!, bucketPlace: BucketPlace!)
         updateBucketList(userId: ID!, bucketPlace: BucketPlace) 
         removeFromBucketList(_id: ID!)
+        
         addTrip(userId: ID!, tripInfo: TripInfo!)
         updateTrip(_id: ID!, tripInfo: TripInfo)
         removeTrip(_id: ID!)
         addHotel(tripId: ID!, hotelInfo: HotelInfo!)
         updateHotel(tripId: ID!, hotelInfo: HotelInfo)
         removeHotel(_id: ID!)
+        
         addTrain(userId: ID!, tripId: ID!, trainInfo: TrainInfo!)
         updateTrain(_id: ID!, trainInfo: TrainInfo)
         removeTrain(trainId: ID!, tripId: ID!)
@@ -193,6 +196,7 @@ const typeDefs = gql`
         addFlight(userId: ID!, tripId: ID!, flightInfo: FlightInfo!)
         updateFlight(_id: ID!, flightInfo: FlightInfo)
         removeFlight(flightId: ID!, userId: ID!)
+        
         addDays(userId: ID, dayInfo: DayInfo!, noOfDays: Number!)
         updateDay(tripId: ID!, dayInfo: DayInfo)
         removeDay(_id: ID!)
