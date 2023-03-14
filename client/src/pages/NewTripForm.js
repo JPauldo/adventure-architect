@@ -10,6 +10,9 @@ const NewTripForm = () => {
     endDate: new Date(),
   });
 
+  const [hotelVisibility, setHotelVisibility] = useState(false);
+  const [flightVisible, setFlightVisible] = useState(false);
+
   const tripNameRef = useRef();
   const destinationRef = useRef();
   const hotelRef = useRef();
@@ -84,29 +87,58 @@ const NewTripForm = () => {
                 value={value}
                 onChange={handleChange}
               />
+
               <div>
+                <h3 className="pt-6 text-center text-xl font-bold tracking-tight text-stone-700 dark:text-stone-200">
+                  Hotel Information
+                </h3>
                 <label htmlFor="hotel" className="sr-only">
-                  Hotel name
+                  Hotel
                 </label>
                 <input
                   ref={hotelRef}
                   id="hotel"
                   name="hotel"
                   type="text"
+                  onChange={() => {
+                    setHotelVisibility(true);
+                  }}
                   className="mt-6 relative block w-full rounded-t-md border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                   placeholder="Hotel name"
                 />
+                {hotelVisibility && (
+                  <>
+                    <input
+                      id="hotel-name"
+                      name="hotel"
+                      type="text"
+                      className="relative block w-full border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                      placeholder="Hotel Address"
+                    />{" "}
+                    <input
+                      id="hotel"
+                      name="hotel"
+                      type="text"
+                      className="relative block w-full rounded-b-md border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                      placeholder="Hotel Phone"
+                    />{" "}
+                    {/* Hotel date picker can go here */}
+                  </>
+                )}
               </div>
               <div>
+                <h3 className="pt-6 text-center text-xl font-bold tracking-tight text-stone-700 dark:text-stone-200">
+                  Transportation
+                </h3>
                 <label htmlFor="flight" className="sr-only">
                   Flight name
                 </label>
                 <input
-                ref={flightRef}
+                  ref={flightRef}
                   id="flight"
                   name="flight"
                   type="text"
-                  className="relative block w-full rounded-b-md border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="mt-6 relative block w-full border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                   placeholder="Flight name"
                 />
               </div>

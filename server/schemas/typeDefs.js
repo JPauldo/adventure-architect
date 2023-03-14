@@ -24,8 +24,7 @@ const typeDefs = gql`
         endingDate: String
         hotel: Hotel
         transport: Transportation
-        daysOfTrip: Day 
-        userId: User
+        daysOfTrip: [Day]
     }
 
     input TripInfo {
@@ -176,25 +175,29 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         updateUser(firstName: String, lastName: String, email: String, password: String): Auth
+        
         addToBucketList(userId: ID!, bucketPlace: BucketPlace!)
         updateBucketList(userId: ID!, bucketPlace: BucketPlace) 
         removeFromBucketList(_id: ID!)
+        
         addTrip(userId: ID!, tripInfo: TripInfo!)
         updateTrip(_id: ID!, tripInfo: TripInfo)
         removeTrip(_id: ID!)
         addHotel(tripId: ID!, hotelInfo: HotelInfo!)
         updateHotel(tripId: ID!, hotelInfo: HotelInfo)
         removeHotel(_id: ID!)
-        addTrain(transportationId: ID!, trainInfo: TrainInfo!)
-        updateTrain(transportationId: ID!, trainInfo: TrainInfo)
-        removeTrain(_id: ID!)
-        addCar(transportationId: ID!, rental: Boolean!, carInfo: CarInfo)
-        updateCar(transportationId: ID!, carInfo: CarInfo)
-        removeCar(_id: ID!)
-        addFlight(transportationId: ID!, flightInfo: FlightInfo!)
-        updateFlight(transportationId: ID!, flightInfo: FlightInfo)
-        removeFlight(_id: ID!)
-        addDay(tripId: ID!, dayInfo: DayInfo!)
+        
+        addTrain(userId: ID!, tripId: ID!, trainInfo: TrainInfo!)
+        updateTrain(_id: ID!, trainInfo: TrainInfo)
+        removeTrain(trainId: ID!, tripId: ID!)
+        addCar(userId: ID!, tripId: ID!, rental: Boolean!, carInfo: CarInfo)
+        updateCar(_id: ID!, carInfo: CarInfo)
+        removeCar(carId: ID!, tripId: ID!)
+        addFlight(userId: ID!, tripId: ID!, flightInfo: FlightInfo!)
+        updateFlight(_id: ID!, flightInfo: FlightInfo)
+        removeFlight(flightId: ID!, userId: ID!)
+        
+        addDays(userId: ID, dayInfo: DayInfo!, noOfDays: Number!)
         updateDay(tripId: ID!, dayInfo: DayInfo)
         removeDay(_id: ID!)
         addItem(dayId: ID!, itemInfo: ItemInfo!)
