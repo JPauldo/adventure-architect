@@ -1,0 +1,18 @@
+[
+    {
+      title: 'Big Meeting',
+      allDay: true,
+      start: new Date(2023, 3, 0),
+      end: new Date(2023, 3, 0),
+    },
+    {
+      title: 'Vacation',
+      start: new Date(2023, 3, 0),
+      end: new Date(2023, 3, 0),
+    },
+    {
+      title: 'Conference',
+      start: new Date(2023, 3, 0),
+      end: new Date(2023, 3, 23),
+    }
+  ]

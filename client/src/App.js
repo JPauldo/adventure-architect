@@ -10,7 +10,7 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
-import Calendar from './pages/Calendar';
+import Calendar from './components/Calendar/Calendar';
 import Nav from './components/Nav/Nav';
 import NewTripForm from './pages/NewTripForm'
 
