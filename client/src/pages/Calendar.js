@@ -21,9 +21,11 @@ export default class Calendar extends React.Component {
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
-              left: 'prev,next today',
+              left: 'prev,next',
               center: 'title',
               right: 'dayGridMonth,timeGridWeek,timeGridDay'
+              // right: 'dayGridMonth'
+              // ,timeGridWeek,timeGridDay'
             }}
             initialView='dayGridMonth'
             height='40rem'
@@ -35,6 +37,7 @@ export default class Calendar extends React.Component {
             weekends={this.state.weekendsVisible}
             initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
             select={this.handleDateSelect}
+            eventColor='#0ea5e9'
             eventContent={renderEventContent} // custom render function
             eventClick={this.handleEventClick}
             eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed

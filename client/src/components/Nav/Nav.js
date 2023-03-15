@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard' },
-  { name: 'Discover', href: '#' },
-  { name: 'Itinerary', href: '#' },
+  { name: 'Discover', href: '/discover' },
+  { name: 'Itinerary', href: '/itinerary' },
   { name: 'Calendar', href: '/calendar' },
 ];
 

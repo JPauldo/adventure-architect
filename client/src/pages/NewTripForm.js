@@ -33,6 +33,8 @@ const NewTripForm = () => {
     console.log("New trip successfully created!");
 
     // add create trip mutation here
+
+    // events can be added to the calendar the form is already on the calendar page
   };
 
   return (
