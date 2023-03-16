@@ -17,6 +17,10 @@ const NewTripForm = () => {
   const tripNameRef = useRef();
   const destinationRef = useRef();
   const hotelRef = useRef();
+  const phoneRef = useRef();
+  const addressRef = useRef();
+  const checkinRef = useRef();
+  const checkoutRef = useRef();
   const flightRef = useRef();
 
   // handles datepicker
@@ -28,9 +32,14 @@ const NewTripForm = () => {
     e.preventDefault();
     console.log(tripNameRef.current.value);
     console.log(destinationRef.current.value);
-    console.log(hotelRef.current.value);
     console.log(value);
-    console.log(flightRef.current.value);
+    console.log("--------------- Hotel info ---------------");
+    console.log(hotelRef.current.value);
+    console.log(addressRef.current.value);
+    console.log(phoneRef.current.value);
+    console.log(checkinRef.current.value);
+    console.log(checkoutRef.current.value);
+    console.log("--------------- Transportation info ---------------");
     console.log("New trip successfully created!");
 
     // add create trip mutation here
@@ -112,30 +121,34 @@ const NewTripForm = () => {
                 {hotelVisibility && (
                   <>
                     <input
-                      id="hotel-name"
-                      name="hotel"
+                      ref={addressRef}
+                      id="hotel-address"
+                      name="hotel-address"
                       type="text"
                       className="relative block w-full border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                       placeholder="Hotel Address"
                     />{" "}
                     <input
-                      id="hotel"
-                      name="hotel"
+                      ref={phoneRef}
+                      id="hotel-phone"
+                      name="hotel-phone"
                       type="text"
                       className="relative block w-full border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                       placeholder="Hotel Phone"
                     />{" "}
                     <div className="flex justify-items-end">
                       <input
-                        id="hotel"
-                        name="hotel"
+                        ref={checkinRef}
+                        id="hotel-checkin"
+                        name="hotel-checkin"
                         type="text"
                         className="relative w-1/2 rounded-bl-md box-border border-0 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                         placeholder="Check in:"
                       />{" "}
                       <input
-                        id="hotel"
-                        name="hotel"
+                        ref={checkoutRef}
+                        id="hotel-checkout"
+                        name="hotel-checkout"
                         type="text"
                         className="relative rounded-br-md w-1/2 box-border border-0 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                         placeholder="Check out:"
