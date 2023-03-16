@@ -219,7 +219,7 @@ const resolvers = {
             }
         },
         // Remove trip info
-        editTrip: async (parent, { _id, tripInfo }, context) => {
+        updateTrip: async (parent, { _id, tripInfo }, context) => {
             const trip = await Trip.findOneAndUpdate(
                 { _id },
                 { tripInfo },
@@ -257,7 +257,7 @@ const resolvers = {
             return hotel;
         },
         // Remove hotel info
-        editHotel: async (parent, { _id, hotelInfo }) => {
+        updateHotel: async (parent, { _id, hotelInfo }) => {
             const hotel = await Hotel.findOneAndUpdate(
                 { _id },
                 { hotelInfo }
@@ -293,7 +293,7 @@ const resolvers = {
             return train;
         },
         // Update train info
-        editTrain: async (parent, { _id, trainInfo }) => {
+        updateTrain: async (parent, { _id, trainInfo }) => {
             const train = await Train.findOneAndUpdate(
                 { _id },
                 { trainInfo }
@@ -341,7 +341,7 @@ const resolvers = {
             return car;
         },
         // Update car info
-        editCar: async (parent, { _id, carInfo }) => {
+        updateCar: async (parent, { _id, carInfo }) => {
             const car = await Car.findOneAndUpdate(
                 { _id },
                 { carInfo }
@@ -383,7 +383,7 @@ const resolvers = {
             return flight;
         },
         // Update flight info
-        editFlight: async (parent, { _id, flightInfo }) => {
+        updateFlight: async (parent, { _id, flightInfo }) => {
             const flight = await Flight.findOneAndUpdate(
                 { _id },
                 { flightInfo }
@@ -423,7 +423,7 @@ const resolvers = {
             return day;
         },
         // Update day info
-        editDay: async (parent, { _id, dayInfo }) => {
+        updateDay: async (parent, { _id, dayInfo }) => {
             const day = await Day.findOneAndUpdate(
                 { _id },
                 { dayInfo },
@@ -457,7 +457,7 @@ const resolvers = {
             return item;
         },
         // Update item info
-        editItem: async (parent, { _id, itemInfo }) => {
+        updateItem: async (parent, { _id, itemInfo }) => {
             const item = await Item.findOneAndUpdate(
                 { _id },
                 { itemInfo },
