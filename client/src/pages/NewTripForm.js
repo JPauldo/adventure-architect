@@ -3,6 +3,7 @@ import { ReactComponent as PlaneLogo } from "../assets/plane.svg";
 import { useRef, useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import Datepicker from "react-tailwindcss-datepicker";
+import Flight from "../components/TransportationForms/Flight";
 
 const NewTripForm = () => {
   const [value, setValue] = useState({
@@ -10,8 +11,7 @@ const NewTripForm = () => {
     endDate: new Date(),
   });
 
-
-  const [transportForm, setTransportForm] = useState('')
+  const [transportForm, setTransportForm] = useState("");
 
   const [hotelVisibility, setHotelVisibility] = useState(false);
 
@@ -48,9 +48,14 @@ const NewTripForm = () => {
     // events can be added to the calendar the form is already on the calendar page
   };
 
-  const renderForm = (e) => {
-    const type = e.target.value;
-    setTransportForm(type)
+  const renderForm = () => {
+    switch (transportForm) {
+      case "Flight":
+        return <Flight />;
+
+      default:
+        return null;
+    }
   };
 
   return (
@@ -168,7 +173,9 @@ const NewTripForm = () => {
                   Transportation
                 </h3>
                 <select
-                  onChange={renderForm}
+                  onChange={(e) => {
+                    setTransportForm(e.target.value);
+                  }}
                   className="mt-3 relative block w-full rounded-md py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                 >
                   <option>Flight</option>
@@ -177,7 +184,7 @@ const NewTripForm = () => {
                   <option>Train</option>
                   <option>Boat / Cruise</option>
                 </select>
-                {transportForm}
+                {renderForm()}
               </div>
             </div>
             <div className="flex flex-row w-full justify-between">
