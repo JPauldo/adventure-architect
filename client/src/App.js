@@ -10,8 +10,9 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
-import Calendar from './pages/Calendar';
+import Calendar from './components/Calendar/Calendar';
 import Nav from './components/Nav/Nav';
+import NewTripForm from './pages/NewTripForm'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -45,6 +46,7 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/calendar" element={<Calendar />} />
+            <Route path="/create" element={<NewTripForm />} />
           </Routes>
         </Router>
       </div>
