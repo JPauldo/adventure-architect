@@ -1,0 +1,26 @@
+[
+  {
+    "airline": "Delta",
+    "aiport": "PHL",
+    "gate": "B1",
+    "flightTime": "12:54:00",
+    "boardingTime": "12:28:00",
+    "parkingSpot": "N/A"
+  },
+  {
+    "airline": "United",
+    "aiport": "LAX",
+    "gate": "75A",
+    "flightTime": "18:45:00",
+    "boardingTime": "18:00:00",
+    "parkingSpot": "P-4"
+  },
+  {
+    "airline": "Spirit",
+    "aiport": "PDX",
+    "gate": "C9",
+    "flightTime": "22:15:00",
+    "boardingTime": "21:45:00",
+    "parkingSpot": "N/A"
+  }
+]
