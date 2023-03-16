@@ -13,13 +13,14 @@ const NewTripForm = () => {
   const [hotelVisibility, setHotelVisibility] = useState(false);
   const [flightVisible, setFlightVisible] = useState(false);
 
+  // set up reference variables
   const tripNameRef = useRef();
   const destinationRef = useRef();
   const hotelRef = useRef();
   const flightRef = useRef();
 
+  // handles datepicker
   const handleChange = (newValue) => {
-    console.log("newValue: ", newValue);
     setValue(newValue);
   };
 
@@ -121,10 +122,25 @@ const NewTripForm = () => {
                       id="hotel"
                       name="hotel"
                       type="text"
-                      className="relative block w-full rounded-b-md border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                      className="relative block w-full border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                       placeholder="Hotel Phone"
                     />{" "}
-                    {/* Hotel date picker can go here */}
+                    <div className="flex justify-items-end">
+                      <input
+                        id="hotel"
+                        name="hotel"
+                        type="text"
+                        className="relative w-1/2 rounded-bl-md box-border border-0 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                        placeholder="Check in:"
+                      />{" "}
+                      <input
+                        id="hotel"
+                        name="hotel"
+                        type="text"
+                        className="relative rounded-br-md w-1/2 box-border border-0 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                        placeholder="Check out:"
+                      />{" "}
+                    </div>
                   </>
                 )}
               </div>
