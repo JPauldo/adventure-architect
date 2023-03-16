@@ -7,11 +7,16 @@ const typeDefs = gql`
         lastName: String
         email: String
         password: String
-        bucket: [BucketPlace]
+        bucketList: [BucketList]
         trips: [Trip]
     }
 
-    type BucketPlace {
+    type BucketList {
+        name: String
+        location: String
+    }
+
+    input BucketInfo {
         name: String
         location: String
     }
@@ -64,7 +69,7 @@ const typeDefs = gql`
         station: String
         carNumber: String
         boardingTime: String
-        boardingTime: String
+        departureTime: String
     }
 
     input TrainInfo {
@@ -72,7 +77,7 @@ const typeDefs = gql`
         station: String
         carNumber: String
         boardingTime: String
-        boardingTime: String
+        departureTime: String
     }
 
     type Car {
@@ -130,8 +135,8 @@ const typeDefs = gql`
         name: String
         address: String
         notes: String
-        latitude: Number
-        longitude: Number
+        latitude: Float
+        longitude: Float
     }
 
     input ItemInfo {
@@ -141,9 +146,9 @@ const typeDefs = gql`
         name: String
         address: String
         notes: String
-        latitude: Number
-        longitude: Number
-        }
+        latitude: Float
+        longitude: Float
+    }
 
     type Auth {
         token: ID!
@@ -176,33 +181,33 @@ const typeDefs = gql`
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         updateUser(firstName: String, lastName: String, email: String, password: String): Auth
         
-        addToBucketList(userId: ID!, bucketPlace: BucketPlace!)
-        updateBucketList(userId: ID!, bucketPlace: BucketPlace) 
-        removeFromBucketList(_id: ID!)
+        addToBucketList(userId: ID!, bucketInfo: BucketInfo!): User
+        updateBucketList(userId: ID!, bucketInfo: BucketInfo): User
+        removeFromBucketList(_id: ID!): User
         
-        addTrip(userId: ID!, tripInfo: TripInfo!)
-        updateTrip(_id: ID!, tripInfo: TripInfo)
-        removeTrip(_id: ID!)
-        addHotel(tripId: ID!, hotelInfo: HotelInfo!)
-        updateHotel(tripId: ID!, hotelInfo: HotelInfo)
-        removeHotel(_id: ID!)
+        addTrip(userId: ID!, tripInfo: TripInfo!): Auth
+        updateTrip(_id: ID!, tripInfo: TripInfo): Auth
+        removeTrip(_id: ID!): Trip
+        addHotel(tripId: ID!, hotelInfo: HotelInfo!): Hotel
+        updateHotel(tripId: ID!, hotelInfo: HotelInfo): Hotel
+        removeHotel(_id: ID!): Hotel
         
-        addTrain(userId: ID!, tripId: ID!, trainInfo: TrainInfo!)
-        updateTrain(_id: ID!, trainInfo: TrainInfo)
-        removeTrain(trainId: ID!, tripId: ID!)
-        addCar(userId: ID!, tripId: ID!, rental: Boolean!, carInfo: CarInfo)
-        updateCar(_id: ID!, carInfo: CarInfo)
-        removeCar(carId: ID!, tripId: ID!)
-        addFlight(userId: ID!, tripId: ID!, flightInfo: FlightInfo!)
-        updateFlight(_id: ID!, flightInfo: FlightInfo)
-        removeFlight(flightId: ID!, userId: ID!)
+        addTrain(userId: ID!, tripId: ID!, trainInfo: TrainInfo!): Trip
+        updateTrain(_id: ID!, trainInfo: TrainInfo): Trip
+        removeTrain(trainId: ID!, tripId: ID!): Trip
+        addCar(userId: ID!, tripId: ID!, rental: Boolean!, carInfo: CarInfo): Car
+        updateCar(_id: ID!, carInfo: CarInfo): Car
+        removeCar(carId: ID!, tripId: ID!): Car
+        addFlight(userId: ID!, tripId: ID!, flightInfo: FlightInfo!): Flight
+        updateFlight(_id: ID!, flightInfo: FlightInfo): Flight
+        removeFlight(flightId: ID!, userId: ID!): Flight
         
-        addDays(userId: ID, dayInfo: DayInfo!, noOfDays: Number!)
-        updateDay(tripId: ID!, dayInfo: DayInfo)
-        removeDay(_id: ID!)
-        addItem(dayId: ID!, itemInfo: ItemInfo!)
-        updateItem(dayId: ID!, itemInfo: ItemInfo)
-        removeItem(_id: ID!)
+        addDays(userId: ID, dayInfo: DayInfo!, noOfDays: Int!): Day
+        updateDay(tripId: ID!, dayInfo: DayInfo): Day
+        removeDay(_id: ID!): Day
+        addItem(dayId: ID!, itemInfo: ItemInfo!): Item
+        updateItem(dayId: ID!, itemInfo: ItemInfo): Item
+        removeItem(_id: ID!): Item
     }
 
 `;

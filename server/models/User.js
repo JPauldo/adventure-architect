@@ -24,7 +24,7 @@ const userSchema = new Schema(
       required: true,
       minlength: 8,
     },
-    bucket: [
+    bucketList: [
       {
         name: {
           type: String,
