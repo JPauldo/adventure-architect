@@ -1,0 +1,23 @@
+[
+    {
+       "name": "The Logan Philadelphia",
+       "location": "One Logan Square, Philadelphia, PA 19103",
+       "phoneNumber": "+1-844-442-8746",
+       "checkIn": "15:00:00",
+       "checkOut": "10:00:00"   
+    },
+    {
+        "name": "The Balmoral",
+        "location": "1 Princes Street, Edinburgh Eh2 2EQ, United Kingdom",
+        "phoneNumber": "+44-131-556-2414",
+        "checkIn": "11:00:00",
+        "checkOut": "9:00:00"  
+    },
+    {
+        "name": "Taumeasina Island Resort",
+        "location": "Matautu Street, Apia, Samoa",
+        "phoneNumber": "+685 61000",
+        "checkIn": "8:00:00",
+        "checkOut": "11:00:00"  
+    }
+]
