@@ -135,55 +135,55 @@ const resolvers = {
                 return { token, user };
             }
         },
-        // Adds new bucket object to user
-        addToBucketList: async (parent, { userId, bucketPlace }, context) => {
+        // Adds new bucketList object to user
+        addToBucketList: async (parent, { userId, bucketInfo }, context) => {
             if (context.user) {
                 await User.findOneAndUpdate(
                     context.user._id,
-                    { $addToSet: { bucket: bucketPlace } },
+                    { $addToSet: { bucketList: bucketInfo } },
                     { runValidators: true }
                 );
             } else {
                 await User.findOneAndUpdate(
                     { _id: userId },
-                    { $addToSet: { bucket: bucketPlace } },
+                    { $addToSet: { bucketList: bucketInfo } },
                     { runValidators: true }
                 );
             }
 
             return user;
         },
-        // Update bucket list data
-        updateBucketList: async (parent, { userId, bucketPlace }, context) => {
+        // Update bucketList list data
+        updateBucketList: async (parent, { userId, bucketInfo }, context) => {
             if (context.user) {
                 await User.findOneAndUpdate(
                     context.user._id,
-                    { $addToSet: { bucket: bucketPlace } },
+                    { $addToSet: { bucketList: bucketInfo } },
                     { runValidators: true }
                 )
             } else {
                 
                 await User.findOneAndUpdate(
                     { _id: userId },
-                    { $addToSet: { bucket: bucketPlace } },
+                    { $addToSet: { bucketList: bucketInfo } },
                     { runValidators: true }
                 );
             }
 
             return user;
         },
-        // Remove bucket object
+        // Remove bucketList object
         removeFromBucketList: async (parent, { _id }, context) => {
             if (context.user) {
                 await User.findOneAndUpdate(
                     context.user._id,
-                    { $pull: { bucket: bucketPlace } },
+                    { $pull: { bucketList: bucketInfo } },
                     { runValidators: true }
                 )
             } else {
                 await User.findOneAndUpdate(
                     _id,
-                    { $pull: { bucket: bucketPlace } },
+                    { $pull: { bucketList: bucketInfo } },
                     { runValidators: true }
                 )
             }

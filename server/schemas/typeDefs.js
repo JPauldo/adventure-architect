@@ -1,25 +1,25 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-  type User {
-    _id: ID!
-    firstName: String
-    lastName: String
-    email: String
-    password: String
-    bucketList: [BucketList]
-    trips: [Trip]
-  }
+    type User {
+        _id: ID!
+        firstName: String
+        lastName: String
+        email: String
+        password: String
+        bucketList: [BucketList]
+        trips: [Trip]
+    }
 
-  type BucketList {
-    name: String
-    location: String
-  }
+    type BucketList {
+        name: String
+        location: String
+    }
 
-  input BucketInfo {
-    name: String
-    location: String
-  }
+    input BucketInfo {
+        name: String
+        location: String
+    }
 
   type Trip {
     _id: ID!
@@ -63,20 +63,22 @@ const typeDefs = gql`
     car: Car
   }
 
-  type Train {
-    _id: ID!
-    company: String
-    station: String
-    carNumber: String
-    boardingTime: String
-  }
+    type Train {
+        _id: ID!
+        company: String
+        station: String
+        carNumber: String
+        boardingTime: String
+        departureTime: String
+    }
 
-  input TrainInfo {
-    company: String
-    station: String
-    carNumber: String
-    boardingTime: String
-  }
+    input TrainInfo {
+        company: String
+        station: String
+        carNumber: String
+        boardingTime: String
+        departureTime: String
+    }
 
   type Car {
     _id: ID!
@@ -125,28 +127,28 @@ const typeDefs = gql`
     notes: String
   }
 
-  type Item {
-    _id: ID!
-    category: String
-    startTime: String
-    endTime: String
-    name: String
-    address: String
-    notes: String
-    latitude: Float
-    longitude: Float
-  }
+    type Item {
+        _id: ID!
+        category: String
+        startTime: String
+        endTime: String
+        name: String
+        address: String
+        notes: String
+        latitude: Float
+        longitude: Float
+    }
 
-  input ItemInfo {
-    category: String
-    startTime: String
-    endTime: String
-    name: String
-    address: String
-    notes: String
-    latitude: Float
-    longitude: Float
-  }
+    input ItemInfo {
+        category: String
+        startTime: String
+        endTime: String
+        name: String
+        address: String
+        notes: String
+        latitude: Float
+        longitude: Float
+    }
 
   type Auth {
     token: ID!
@@ -173,50 +175,41 @@ const typeDefs = gql`
     getSingleItem(itemId: String!): Item
   }
 
-  # Create, Update, Delete operations
-  type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(
-      firstName: String!
-      lastName: String!
-      email: String!
-      password: String!
-    ): Auth
-    updateUser(
-      firstName: String
-      lastName: String
-      email: String
-      password: String
-    ): Auth
+    # Create, Update, Delete operations
+    type Mutation {
+        login(email: String!, password: String!): Auth
+        addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+        updateUser(firstName: String, lastName: String, email: String, password: String): Auth
+        
+        addToBucketList(userId: ID!, bucketInfo: BucketInfo!): User
+        updateBucketList(userId: ID!, bucketInfo: BucketInfo): User
+        removeFromBucketList(_id: ID!): User
+        
+        addTrip(userId: ID!, tripInfo: TripInfo!): Auth
+        updateTrip(_id: ID!, tripInfo: TripInfo): Auth
+        removeTrip(_id: ID!): Trip
+        addHotel(tripId: ID!, hotelInfo: HotelInfo!): Hotel
+        updateHotel(tripId: ID!, hotelInfo: HotelInfo): Hotel
+        removeHotel(_id: ID!): Hotel
+        
+        addTrain(userId: ID!, tripId: ID!, trainInfo: TrainInfo!): Trip
+        updateTrain(_id: ID!, trainInfo: TrainInfo): Trip
+        removeTrain(trainId: ID!, tripId: ID!): Trip
+        addCar(userId: ID!, tripId: ID!, rental: Boolean!, carInfo: CarInfo): Car
+        updateCar(_id: ID!, carInfo: CarInfo): Car
+        removeCar(carId: ID!, tripId: ID!): Car
+        addFlight(userId: ID!, tripId: ID!, flightInfo: FlightInfo!): Flight
+        updateFlight(_id: ID!, flightInfo: FlightInfo): Flight
+        removeFlight(flightId: ID!, userId: ID!): Flight
+        
+        addDays(userId: ID, dayInfo: DayInfo!, noOfDays: Int!): Day
+        updateDay(tripId: ID!, dayInfo: DayInfo): Day
+        removeDay(_id: ID!): Day
+        addItem(dayId: ID!, itemInfo: ItemInfo!): Item
+        updateItem(dayId: ID!, itemInfo: ItemInfo): Item
+        removeItem(_id: ID!): Item
+    }
 
-    addToBucketList(userId: ID!, bucketPlace: BucketPlace!): User
-    updateBucketList(userId: ID!, bucketPlace: BucketPlace): User
-    removeFromBucketList(_id: ID!): User
-
-    addTrip(userId: ID!, tripInfo: TripInfo!): Auth
-    updateTrip(_id: ID!, tripInfo: TripInfo): Auth
-    removeTrip(_id: ID!): Trip
-    addHotel(tripId: ID!, hotelInfo: HotelInfo!): Hotel
-    updateHotel(tripId: ID!, hotelInfo: HotelInfo): Hotel
-    removeHotel(_id: ID!): Hotel
-
-    addTrain(userId: ID!, tripId: ID!, trainInfo: TrainInfo!): Trip
-    updateTrain(_id: ID!, trainInfo: TrainInfo): Trip
-    removeTrain(trainId: ID!, tripId: ID!): Trip
-    addCar(userId: ID!, tripId: ID!, rental: Boolean!, carInfo: CarInfo): Car
-    updateCar(_id: ID!, carInfo: CarInfo): Car
-    removeCar(carId: ID!, tripId: ID!): Car
-    addFlight(userId: ID!, tripId: ID!, flightInfo: FlightInfo!): Flight
-    updateFlight(_id: ID!, flightInfo: FlightInfo): Flight
-    removeFlight(flightId: ID!, userId: ID!): Flight
-
-    addDays(userId: ID, dayInfo: DayInfo!, noOfDays: Int!): Day
-    updateDay(tripId: ID!, dayInfo: DayInfo): Day
-    removeDay(_id: ID!): Day
-    addItem(dayId: ID!, itemInfo: ItemInfo!): Day
-    updateItem(dayId: ID!, itemInfo: ItemInfo): Day
-    removeItem(_id: ID!): Day
-  }
 `;
 
 module.exports = typeDefs;
