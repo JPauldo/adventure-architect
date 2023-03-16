@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
 
-export default function Flight({ setFlightInfo }) {
+export default function Flight({ setTransportInfo }) {
   const airlineRef = useRef();
   const flightNum = useRef();
   const departure = useRef();
   const arrival = useRef();
 
   const handleChange = () => {
-    setFlightInfo({
+    setTransportInfo({
         airline: airlineRef.current.value,
         flightNumber: flightNum.current.value,
         departure: departure.current.value,

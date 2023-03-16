@@ -12,7 +12,7 @@ const NewTripForm = () => {
     endDate: new Date(),
   });
 
-  const [flightInfo, setFlightInfo] = useState({})
+  const [transportInfo, setTransportInfo] = useState({})
 
   const [transportForm, setTransportForm] = useState("");
 
@@ -44,8 +44,7 @@ const NewTripForm = () => {
     console.log(checkinRef.current.value);
     console.log(checkoutRef.current.value);
     console.log("--------------- Transportation info ---------------");
-    console.log("New trip successfully created!");
-    console.log(flightInfo);
+    console.log(transportInfo);
 
     // add create trip mutation here
 
@@ -55,10 +54,10 @@ const NewTripForm = () => {
   const renderForm = () => {
     switch (transportForm) {
       case "Flight":
-        return <Flight setFlightInfo={setFlightInfo}/>;
+        return <Flight setTransportInfo={setTransportInfo}/>;
 
       case "Bus":
-        return <Bus />;
+        return <Bus setTransportInfo={setTransportInfo}/>;
       default:
         return null;
     }
