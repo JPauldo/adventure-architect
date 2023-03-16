@@ -10,8 +10,10 @@ const NewTripForm = () => {
     endDate: new Date(),
   });
 
+
+  const [transportForm, setTransportForm] = useState('')
+
   const [hotelVisibility, setHotelVisibility] = useState(false);
-  const [flightVisible, setFlightVisible] = useState(false);
 
   // set up reference variables
   const tripNameRef = useRef();
@@ -21,7 +23,6 @@ const NewTripForm = () => {
   const addressRef = useRef();
   const checkinRef = useRef();
   const checkoutRef = useRef();
-  const flightRef = useRef();
 
   // handles datepicker
   const handleChange = (newValue) => {
@@ -45,6 +46,11 @@ const NewTripForm = () => {
     // add create trip mutation here
 
     // events can be added to the calendar the form is already on the calendar page
+  };
+
+  const renderForm = (e) => {
+    const type = e.target.value;
+    setTransportForm(type)
   };
 
   return (
@@ -161,17 +167,17 @@ const NewTripForm = () => {
                 <h3 className="pt-6 text-center text-xl font-bold tracking-tight text-stone-700 dark:text-stone-200">
                   Transportation
                 </h3>
-                <label htmlFor="flight" className="sr-only">
-                  Flight name
-                </label>
-                <input
-                  ref={flightRef}
-                  id="flight"
-                  name="flight"
-                  type="text"
-                  className="mt-6 relative block w-full border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                  placeholder="Flight name"
-                />
+                <select
+                  onChange={renderForm}
+                  className="mt-3 relative block w-full rounded-md py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                >
+                  <option>Flight</option>
+                  <option>Car</option>
+                  <option>Bus</option>
+                  <option>Train</option>
+                  <option>Boat / Cruise</option>
+                </select>
+                {transportForm}
               </div>
             </div>
             <div className="flex flex-row w-full justify-between">
