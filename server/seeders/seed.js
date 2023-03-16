@@ -31,24 +31,25 @@ db.once('open', async () => {
     await Train.create(trainSeeds);
     await Day.create(daySeeds);
     await Trip.create(tripSeeds);
-    
 
-    for (let i = 0; i < thoughtSeeds.length; i++) {
-      const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
-      const user = await User.findOneAndUpdate(
-        { username: thoughtAuthor },
-        {
-          $addToSet: {
-            thoughts: _id,
-          },
-        }
-      );
-    }
-  } catch (err) {
-    console.error(err);
-    process.exit(1);
-  }
+
+//     for (let i = 0; i < thoughtSeeds.length; i++) {
+//       const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
+//       const user = await User.findOneAndUpdate(
+//         { username: thoughtAuthor },
+//         {
+//           $addToSet: {
+//             thoughts: _id,
+//           },
+//         }
+//       );
+//     }
+//   } catch (err) {
+//     console.error(err);
+//     process.exit(1);
+//   }
 
   console.log('all done!');
   process.exit(0);
-});
+  }
+};
