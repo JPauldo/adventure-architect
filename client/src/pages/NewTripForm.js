@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import Datepicker from "react-tailwindcss-datepicker";
 import Flight from "../components/TransportationForms/Flight";
+import Bus from "../components/TransportationForms/Bus";
 
 const NewTripForm = () => {
   const [value, setValue] = useState({
@@ -53,6 +54,8 @@ const NewTripForm = () => {
       case "Flight":
         return <Flight />;
 
+      case "Bus":
+        return <Bus />;
       default:
         return null;
     }
