@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import { ReactComponent as PlaneLogo } from '../assets/plane.svg';
-import { useRef } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import { Link } from "react-router-dom";
+import { ReactComponent as PlaneLogo } from "../assets/plane.svg";
+import { useRef } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../utils/mutations";
 
 const Signup = () => {
   const firstNameRef = useRef();
@@ -11,7 +11,7 @@ const Signup = () => {
   const passwordRef = useRef();
   const passwordCheckRef = useRef();
 
-  const [addUser, {error}] = useMutation(ADD_USER)
+  const [addUser, { error }] = useMutation(ADD_USER);
 
   const validatePassword = () => {
     if (passwordRef.current.value === passwordCheckRef.current.value) {
@@ -31,20 +31,20 @@ const Signup = () => {
       password: passwordRef.current.value,
     };
 
+    console.log(userData);
     const validate = validatePassword();
 
     if (validate) {
-      
       try {
-        const {data} = addUser({
-          variables: {...userData}
-        })
-        console.log(data);
+        const {data} = await addUser({
+          variables: { ...userData },
+        });
+        window.location.assign('/dashboard')
       } catch (error) {
         console.log(error);
       }
     } else {
-      console.log('Passwords must match!');
+      console.log("Passwords must match!");
     }
   };
 
@@ -54,9 +54,16 @@ const Signup = () => {
         <div className="w-full max-w-md space-y-8">
           <div>
             <PlaneLogo />
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-stone-700 dark:text-stone-200">Create an account</h2>
+            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-stone-700 dark:text-stone-200">
+              Create an account
+            </h2>
           </div>
-          <form onSubmit={submitHandler} className="mt-8 space-y-6" action="#" method="POST">
+          <form
+            onSubmit={submitHandler}
+            className="mt-8 space-y-6"
+            action="#"
+            method="POST"
+          >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
