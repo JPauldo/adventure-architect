@@ -1,13 +1,18 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as PlaneLogo } from '../assets/plane.svg';
+import { useMutation} from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
 import { useRef } from 'react';
+import Auth from "../utils/auth"
 
 const Login = () => {
+
+  const [login, {error}] = useMutation(LOGIN_USER)
 
   const emailRef = useRef()
   const passwordRef = useRef()
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
 
     const userData = {
@@ -15,9 +20,15 @@ const Login = () => {
       password: passwordRef.current.value,
     };
 
-    //  submit to backend
-    // redirect to dashboard
-    console.log(userData);
+    try {
+      const {data} = await login({
+        variables: {...userData}
+      })
+      console.log(data);
+      Auth.login(data.login.token);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

@@ -3,6 +3,7 @@ import { ReactComponent as PlaneLogo } from "../assets/plane.svg";
 import { useRef } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
+import Auth from "../utils/auth"
 
 const Signup = () => {
   const firstNameRef = useRef();
@@ -31,7 +32,6 @@ const Signup = () => {
       password: passwordRef.current.value,
     };
 
-    console.log(userData);
     const validate = validatePassword();
 
     if (validate) {
@@ -39,7 +39,8 @@ const Signup = () => {
         const {data} = await addUser({
           variables: { ...userData },
         });
-        window.location.assign('/dashboard')
+
+        Auth.login(data.addUser.token);
       } catch (error) {
         console.log(error);
       }
