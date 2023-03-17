@@ -3,6 +3,8 @@ import { ReactComponent as PlaneLogo } from "../assets/plane.svg";
 import { useRef, useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import Datepicker from "react-tailwindcss-datepicker";
+import Flight from "../components/TransportationForms/Flight";
+import Bus from "../components/TransportationForms/Bus";
 
 const NewTripForm = () => {
   const [value, setValue] = useState({
@@ -10,16 +12,23 @@ const NewTripForm = () => {
     endDate: new Date(),
   });
 
-  const [hotelVisibility, setHotelVisibility] = useState(false);
-  const [flightVisible, setFlightVisible] = useState(false);
+  const [transportInfo, setTransportInfo] = useState({})
 
+  const [transportForm, setTransportForm] = useState("");
+
+  const [hotelVisibility, setHotelVisibility] = useState(false);
+
+  // set up reference variables
   const tripNameRef = useRef();
   const destinationRef = useRef();
   const hotelRef = useRef();
-  const flightRef = useRef();
+  const phoneRef = useRef();
+  const addressRef = useRef();
+  const checkinRef = useRef();
+  const checkoutRef = useRef();
 
+  // handles datepicker
   const handleChange = (newValue) => {
-    console.log("newValue: ", newValue);
     setValue(newValue);
   };
 
@@ -27,14 +36,31 @@ const NewTripForm = () => {
     e.preventDefault();
     console.log(tripNameRef.current.value);
     console.log(destinationRef.current.value);
-    console.log(hotelRef.current.value);
     console.log(value);
-    console.log(flightRef.current.value);
-    console.log("New trip successfully created!");
+    console.log("--------------- Hotel info ---------------");
+    console.log(hotelRef.current.value);
+    console.log(addressRef.current.value);
+    console.log(phoneRef.current.value);
+    console.log(checkinRef.current.value);
+    console.log(checkoutRef.current.value);
+    console.log("--------------- Transportation info ---------------");
+    console.log(transportInfo);
 
     // add create trip mutation here
 
     // events can be added to the calendar the form is already on the calendar page
+  };
+
+  const renderForm = () => {
+    switch (transportForm) {
+      case "Flight":
+        return <Flight setTransportInfo={setTransportInfo}/>;
+
+      case "Bus":
+        return <Bus setTransportInfo={setTransportInfo}/>;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -111,20 +137,39 @@ const NewTripForm = () => {
                 {hotelVisibility && (
                   <>
                     <input
-                      id="hotel-name"
-                      name="hotel"
+                      ref={addressRef}
+                      id="hotel-address"
+                      name="hotel-address"
                       type="text"
                       className="relative block w-full border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                       placeholder="Hotel Address"
                     />{" "}
                     <input
-                      id="hotel"
-                      name="hotel"
+                      ref={phoneRef}
+                      id="hotel-phone"
+                      name="hotel-phone"
                       type="text"
-                      className="relative block w-full rounded-b-md border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                      className="relative block w-full border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                       placeholder="Hotel Phone"
                     />{" "}
-                    {/* Hotel date picker can go here */}
+                    <div className="flex justify-items-end">
+                      <input
+                        ref={checkinRef}
+                        id="hotel-checkin"
+                        name="hotel-checkin"
+                        type="text"
+                        className="relative w-1/2 rounded-bl-md box-border border-0 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                        placeholder="Check in:"
+                      />{" "}
+                      <input
+                        ref={checkoutRef}
+                        id="hotel-checkout"
+                        name="hotel-checkout"
+                        type="text"
+                        className="relative rounded-br-md w-1/2 box-border border-0 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                        placeholder="Check out:"
+                      />{" "}
+                    </div>
                   </>
                 )}
               </div>
@@ -132,17 +177,19 @@ const NewTripForm = () => {
                 <h3 className="pt-6 text-center text-xl font-bold tracking-tight text-stone-700 dark:text-stone-200">
                   Transportation
                 </h3>
-                <label htmlFor="flight" className="sr-only">
-                  Flight name
-                </label>
-                <input
-                  ref={flightRef}
-                  id="flight"
-                  name="flight"
-                  type="text"
-                  className="mt-6 relative block w-full border-0 py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                  placeholder="Flight name"
-                />
+                <select
+                  onChange={(e) => {
+                    setTransportForm(e.target.value);
+                  }}
+                  className="mt-3 relative block w-full rounded-md py-1.5 text-stone-900 ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                >
+                  <option>Flight</option>
+                  <option>Car</option>
+                  <option>Bus</option>
+                  <option>Train</option>
+                  <option>Boat / Cruise</option>
+                </select>
+                {renderForm()}
               </div>
             </div>
             <div className="flex flex-row w-full justify-between">

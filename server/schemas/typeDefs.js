@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
     type User {
@@ -21,47 +21,47 @@ const typeDefs = gql`
         location: String
     }
 
-    type Trip {
-        _id: ID!
-        name: String
-        location: String
-        startingDate: String 
-        endingDate: String
-        hotel: Hotel
-        transport: Transportation
-        daysOfTrip: [Day]
-    }
+  type Trip {
+    _id: ID!
+    name: String
+    location: String
+    startingDate: String
+    endingDate: String
+    hotel: Hotel
+    transport: Transportation
+    daysOfTrip: [Day]
+  }
 
-    input TripInfo {
-        name: String
-        location: String
-        startingDate: String 
-        endingDate: String
-    }
+  input TripInfo {
+    name: String
+    location: String
+    startingDate: String
+    endingDate: String
+  }
 
-    type Hotel {
-        _id: ID!
-        name: String
-        address: String
-        phoneNumber: String
-        checkIn: String
-        checkOut: String
-    }
+  type Hotel {
+    _id: ID!
+    name: String
+    address: String
+    phoneNumber: String
+    checkIn: String
+    checkOut: String
+  }
 
-    input HotelInfo {
-        name: String
-        address: String
-        phoneNumber: String
-        checkIn: String
-        checkOut: String
-    }
+  input HotelInfo {
+    name: String
+    address: String
+    phoneNumber: String
+    checkIn: String
+    checkOut: String
+  }
 
-    type Transportation {
-        _id: ID!
-        flight: Flight
-        train: Train
-        car: Car
-    }
+  type Transportation {
+    _id: ID!
+    flight: Flight
+    train: Train
+    car: Car
+  }
 
     type Train {
         _id: ID!
@@ -80,52 +80,52 @@ const typeDefs = gql`
         departureTime: String
     }
 
-    type Car {
-        _id: ID!
-        rental: Boolean
-        company: String
-        pickUpTime: String
-        returnTime: String
-        carModel: String
-    }
+  type Car {
+    _id: ID!
+    rental: Boolean
+    company: String
+    pickUpTime: String
+    returnTime: String
+    carModel: String
+  }
 
-    input CarInfo {
-        company: String
-        pickUpTime: String
-        returnTime: String
-        carModel: String
-    }
+  input CarInfo {
+    company: String
+    pickUpTime: String
+    returnTime: String
+    carModel: String
+  }
 
-    type Flight {
-        _id: ID!
-        airline: String
-        airport: String
-        gate: String
-        flightTime: String
-        boardingTime: String
-        parkingSpot: String
-    }
+  type Flight {
+    _id: ID!
+    airline: String
+    airport: String
+    gate: String
+    flightTime: String
+    boardingTime: String
+    parkingSpot: String
+  }
 
-    input FlightInfo {
-        airline: String
-        airport: String
-        gate: String
-        flightTime: String
-        boardingTime: String
-        parkingSpot: String
-    }
+  input FlightInfo {
+    airline: String
+    airport: String
+    gate: String
+    flightTime: String
+    boardingTime: String
+    parkingSpot: String
+  }
 
-    type Day {
-        _id: ID!
-        date: String
-        items: [Item]
-        notes: String
-    }
+  type Day {
+    _id: ID!
+    date: String
+    items: [Item]
+    notes: String
+  }
 
-    input DayInfo {
-        date: String
-        notes: String
-    }
+  input DayInfo {
+    date: String
+    notes: String
+  }
 
     type Item {
         _id: ID!
@@ -150,30 +150,30 @@ const typeDefs = gql`
         longitude: Float
     }
 
-    type Auth {
-        token: ID!
-        user: User
-    }
+  type Auth {
+    token: ID!
+    user: User
+  }
 
-    # Read operations 
-    type Query {
-        getMe(firstName: String, lastName: String): User
-        getSingleUser(firstName: String!, lastName: String!): User
-        getAllUsers: [User]
+  # Read operations
+  type Query {
+    getMe(firstName: String, lastName: String): User
+    getSingleUser(firstName: String!, lastName: String!): User
+    getAllUsers: [User]
 
-        getSingleTrip(tripId: String!): Trip
-        getTripsByUser(userId: String!): [Trip]
-        getAllTrips: [Trip]
+    getSingleTrip(tripId: String!): Trip
+    getTripsByUser(userId: String!): [Trip]
+    getAllTrips: [Trip]
 
-        getSingleHotel(hotelId: String!): Hotel
-        getSingleTrain(trainId: String!): Train
-        getSingleCar(carId: String!): Car
-        getSingleFlight(flightId: String!): Flight
+    getSingleHotel(hotelId: String!): Hotel
+    getSingleTrain(trainId: String!): Train
+    getSingleCar(carId: String!): Car
+    getSingleFlight(flightId: String!): Flight
 
-        getSingleDay(dayId: String!): Day
+    getSingleDay(dayId: String!): Day
 
-        getSingleItem(itemId: String!): Item
-    }
+    getSingleItem(itemId: String!): Item
+  }
 
     # Create, Update, Delete operations
     type Mutation {
