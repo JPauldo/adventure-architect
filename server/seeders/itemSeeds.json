@@ -1,0 +1,26 @@
+[
+    {
+        "category": "Restaurant",
+        "startTime": "10:00:00",
+        "endTime": "11:30:00",
+        "name": "Harp & Crown",
+        "address": "1525 Sansom Street, Philadelphia, PA 19102",
+        "notes": "Bottomless mimosas & create your own donut station!"
+    },
+    {
+        "category": "Activity",
+        "startTime": "12:45:00",
+        "endTime": "15:00:00",
+        "name": "Big Bus Philadelphia",
+        "address": "526 Market Street",
+        "notes": "Across the street from Liberty Bell Center."
+    },
+    {
+        "category": "Attraction",
+        "startTime": "19:00:00",
+        "endTime": "22:0000:00",
+        "name": "Franklin After-Hours",
+        "address": "222 N 20th Street, Philadelphia, PA",
+        "notes": "Adults only speakeasy style event after Franklin Insitute closes to the public" 
+    }
+]
