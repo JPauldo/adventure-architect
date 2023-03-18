@@ -1,0 +1,58 @@
+[
+    {
+        "firstName": "Jeff",
+        "lastname": "Johannson",
+        "email": "JJohannson@gmail.com",
+        "password": "password01"
+    },
+    {
+        "firstName": "Brian",
+        "lastName": "kernighan",
+        "email": "bkernighan@techfriends.dev",
+        "password": "password02"
+      },
+      {
+        "firstName": "Max",
+        "lastName": "Alexander",
+        "email": "mkanatalexander@techfriends.dev",
+        "password": "password03"
+      },
+      {
+        "firstName": "Jennifer",
+        "lastName": "Carpenter",
+        "email": "wtls@techfriends.dev",
+        "password": "password04",
+        "bucket": {
+            "name": "Cherry Blossom Festival!",
+            "location": "Tokyo"
+            }
+      },
+      {
+        "firstName": "Kent",
+        "lastName": "Beck",
+        "email": "kbeck@techfriends.dev",
+        "password": "password05"
+      },
+      {
+        "firstName": "Edward",
+        "lastName": "Berard",
+        "email": "evberard@techfriends.dev",
+        "password": "password06"
+      },
+      {
+        "firstName": "Alan",
+        "lastName": "Kay",
+        "email": "akay@techfriends.dev",
+        "password": "password07",
+        "bucket": {
+            "name": "Scotch Tasting Tour!",
+            "location": "Edinburgh, Scotland"
+            }
+      },
+      {
+        "firstName": "Vanessa",
+        "lastName": "Orozco",
+        "email": "VanOzco@techfriends.dev",
+        "password": "password08"
+      }
+]
