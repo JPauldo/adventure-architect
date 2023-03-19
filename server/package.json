@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "seed": "node utils/seed.js",
+    "seed": "node seeders/seed.js",
     "watch": "nodemon server.js"
   },
   "keywords": [],
